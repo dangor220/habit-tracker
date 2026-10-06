@@ -1,8 +1,11 @@
 import HabitItem from './HabitItem';
 
-export default function HabitLis() {
-  const habits = [{ id: 1, name: 'Practice CSS' }];
+export type Habit = { id: string; name: string };
+type HabitListProps = {
+  habits: Habit[];
+};
 
+export default function HabitList({ habits }: HabitListProps) {
   if (habits.length === 0) {
     return (
       <p className="text-center text-zinc-500 py-12">
