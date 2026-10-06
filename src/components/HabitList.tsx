@@ -1,10 +1,7 @@
 import HabitItem from './HabitItem';
 
 export default function HabitLis() {
-  const habits = [
-    { id: 1, name: 'one' },
-    { id: 2, name: 'two' },
-  ];
+  const habits = [{ id: 1, name: 'Practice CSS' }];
 
   if (habits.length === 0) {
     return (
@@ -15,10 +12,10 @@ export default function HabitLis() {
   }
 
   return (
-    <ul className="flex flex-col gap-3">
-      {habits.map(({ id, name }) => (
-        <li key={id}>{name}</li>
+    <div className="flex flex-col gap-3">
+      {habits.map((habit) => (
+        <HabitItem key={habit.id} habit={habit} />
       ))}
-    </ul>
+    </div>
   );
 }
