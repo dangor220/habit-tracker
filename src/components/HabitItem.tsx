@@ -1,7 +1,7 @@
 import { Button } from './Button';
 import { eachDayOfInterval, endOfWeek, format, isFuture, isSameDay, startOfWeek } from 'date-fns';
-
 import type { Habit } from './HabitList';
+
 type HabitItemProps = {
   habit: Habit;
   deleteHabit: (id: string) => void;
@@ -13,13 +13,15 @@ export default function HabitItem({ habit, deleteHabit, toggleHabit }: HabitItem
     start: startOfWeek(new Date(), { weekStartsOn: 1 }),
     end: endOfWeek(new Date(), { weekStartsOn: 1 }),
   });
+  const completions = habit.completions.length;
+  const streak = completions > 0 ? '🔥' + completions : '';
 
   return (
     <div className="rounded-xl bg-zinc-700 p-4 flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="font-medium">{habit.name}</span>
-          <span className="text-sm text-amber-400">🔥 {habit.completions.length}</span>
+          <span className="text-sm text-amber-400">{streak}</span>
         </div>
         <Button
           className="text-sm"
