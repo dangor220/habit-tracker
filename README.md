@@ -8,7 +8,7 @@
 <div align="center">
 
   <a href="https://github.com/dangor220/habit-tracker/tree/main/src">
-    <img src="assets/readme/logo.svg" alt="Logo" width="140" height="140">
+    <img src="assets/readme/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Habit Tracker: трекер привычек для ежедневного контроля и формирования полезных навыков</h3>
