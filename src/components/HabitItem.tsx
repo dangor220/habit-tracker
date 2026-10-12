@@ -1,6 +1,6 @@
 import type { Habit } from '../context/useHabits';
 import { Button } from './Button';
-import { format, isFuture, isSameDay } from 'date-fns';
+import { format, isFuture, isSameDay, subDays } from 'date-fns';
 
 type HabitItemProps = {
   habit: Habit;
@@ -15,15 +15,14 @@ export default function HabitItem({
   toggleHabit,
   visibleDates,
 }: HabitItemProps) {
-  const completions = habit.completions.length;
-  const streak = completions > 0 ? '🔥' + completions : '';
+  const streak = getStreak(habit.completions);
 
   return (
     <div className="rounded-xl bg-zinc-700 p-4 flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="font-medium">{habit.name}</span>
-          <span className="text-sm text-amber-400">{streak}</span>
+          {streak !== 0 && <span className="text-sm text-amber-400">🔥 {streak}</span>}
         </div>
         <Button
           className="text-sm"
@@ -47,4 +46,16 @@ export default function HabitItem({
       </div>
     </div>
   );
+}
+
+function getStreak(completions: Date[]) {
+  let streak = 0;
+  let date = new Date();
+
+  while (completions.some((c) => isSameDay(c, date))) {
+    streak++;
+    date = subDays(date, 1);
+  }
+
+  return streak;
 }
