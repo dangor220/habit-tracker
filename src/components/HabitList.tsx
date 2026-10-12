@@ -1,7 +1,11 @@
 import { useHabits } from '../context/useHabits';
 import HabitItem from './HabitItem';
 
-export default function HabitList() {
+type HabitListProps = {
+  visibleDates: Date[];
+};
+
+export default function HabitList({ visibleDates }: HabitListProps) {
   const { habits, deleteHabit, toggleHabit } = useHabits();
   if (habits.length === 0) {
     return (
@@ -19,6 +23,7 @@ export default function HabitList() {
           habit={habit}
           deleteHabit={deleteHabit}
           toggleHabit={toggleHabit}
+          visibleDates={visibleDates}
         />
       ))}
     </div>
