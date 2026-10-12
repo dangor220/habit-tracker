@@ -18,6 +18,7 @@
     <br />
     <a href="https://github.com/dangor220/habit-tracker/tree/main/src">View code</a>
     <br />
+    <br />
     <a href="https://dangor220.github.io/habit-tracker/">Open demo</a>
   </p>
 </div>
