@@ -1,11 +1,18 @@
 import { Button } from './Button';
+import { useHabits } from '../context/useHabits';
+import { isToday } from 'date-fns';
 
 export default function Header() {
+  const { habits } = useHabits();
+  const doneToday = habits.filter((habit) => habit.completions.some((c) => isToday(c)));
+
   return (
     <header className="flex items-center justify-between">
       <div className="flex flex-col gap-1">
         <h1 className="text-3xl font-bold">Habit Tracker</h1>
-        <span className="text-zinc-400 text-small">1 / 1 done today</span>
+        <span className="text-zinc-400 text-small">
+          {doneToday.length} / {habits.length} done today
+        </span>
       </div>
       <div className="flex flex-col gap-1 items-end">
         <span className="text-zinc-400 text-small">Apr 6 - Apr 12</span>
